@@ -1,0 +1,54 @@
+
+.nopadding {
+  margin-top: 0 !important;
+  padding-top: 0%;
+
+}
+.view {
+  background: url("https://i.ibb.co/vXqDmnh/background.jpg")no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+ height: 100vh;
+ margin-top: -60px;
+ 
+}
+
+.full-bg-img {
+  color: #98ffdb;
+  text-shadow: #000 1px 0 10px;
+}
+
+.title {
+  font-weight: 100;
+}
+
+.content {
+  text-align: center;
+}
+
+.content h1 {
+  font-size: 88px;
+}
+
+
+.content h1 span {
+  color: rgb(197, 245, 230);
+  text-shadow: #000 1px 0 10px;
+}
+
+.content p {
+  line-height: 22px;
+  font-size: 26px;
+}
+
+.content .trade {
+  display: inline-block;
+  margin-top: 30px;
+  background: #028476;
+  color: #fff;
+  text-decoration: none;
+  padding: 15px 30px;
+  border-radius: 30px;
+}

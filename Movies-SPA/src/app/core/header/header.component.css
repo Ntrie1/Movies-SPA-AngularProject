@@ -1,0 +1,38 @@
+header {
+    background-color: #A5CFE3;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 32px;
+}
+
+/* Navigation styles */
+nav {
+    background-color:#02413b;
+    color: #fff;
+    padding: 10px;
+    margin-bottom: 0px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: right;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+}
