@@ -1,7 +1,7 @@
 header {
     background-color: #A5CFE3;
     color: #fff;
-    padding: 20px;
+    /* padding: 20px; */
     text-align: center;
 }
 
@@ -36,3 +36,9 @@ nav ul li a {
     padding: 10px;
     border-radius: 5px;
 }
+
+.navbar-logo img {
+    height: 80px; 
+    width: auto; 
+    margin: 0px; 
+  }
