@@ -24,13 +24,13 @@
           <p class="error-message" *ngIf="inputPassowrd.errors?.['required']">Password is required</p>
           <p class="error-message" *ngIf="inputPassowrd.errors?.['minlength']">Password must be at least 5 characters!</p>
           <p class="error-message" *ngIf="inputPassowrd.errors?.['pattern']">Password is invalid! No whitespace allowed!</p>
+          
         </ng-container>
    
       </div>
      
-      <button [disabled]="form.invalid">Login</button>
+      <button [disabled]="form.invalid" [style.opacity]="form.invalid ? 0.5 : 1">Login</button>
   
-      {{form.value | json}}
     </form>
 
 </main>

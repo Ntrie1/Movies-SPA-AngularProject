@@ -56,7 +56,7 @@
         </div>
     
       
-      <button [disabled]="form.invalid" >Register</button>
+      <button [disabled]="form.invalid" [style.opacity]=" form.invalid ? 0.5 : 1" >Register</button>
     </form>
 
 
