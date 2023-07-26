@@ -8,6 +8,8 @@ import { NotFoundComponent } from './mainComponents/not-found/not-found.componen
 import { CoreModule } from './core/core.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { UserRoutingModule } from './user/user-routing.module';
+import {HttpClientModule} from '@angular/common/http'
+import { UserModule } from './user/user.module';
 
 @NgModule({
   declarations: [
@@ -19,8 +21,10 @@ import { UserRoutingModule } from './user/user-routing.module';
     BrowserModule,
     AppRoutingModule,
     CoreModule,
+    UserModule,
     BrowserAnimationsModule,
-    UserRoutingModule
+    UserRoutingModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

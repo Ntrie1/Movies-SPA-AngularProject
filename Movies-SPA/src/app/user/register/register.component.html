@@ -1,27 +1,65 @@
 <main class="container">
-    <form>
+    <form #form="ngForm" (ngSubmit)="register(form)">
+
       <h1>Registration</h1>
+     
       <div class="form-group">
         <label for="username">Username</label>
-        <input type="text" id="username" name="username" placeholder="Enter your username">
+        <input type="text" id="username" name="username" placeholder="Enter your username" 
+        #inputUsername="ngModel" ngModel required minlength="3" maxlength="30">
+
+        <ng-container *ngIf="inputUsername.invalid && !inputUsername.untouched">
+          <p class="error-message" *ngIf="inputUsername.errors?.['minlength']">Username must be at least 3 characters!</p>
+          <p class="error-message" *ngIf="inputUsername.errors?.['required']">Username is required!</p>
+        </ng-container>
+
       </div>
+      
       <div class="form-group">
         <label for="email">Email</label>
-        <input type="email" id="email" name="email" placeholder="Enter your email">
+        <input type="email" id="email" name="email" placeholder="Enter your email" 
+        #inputEmail="ngModel" ngModel required minlength="4" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+
+        <ng-container *ngIf="inputEmail.invalid && !inputEmail.untouched">
+          <p class="error-message" *ngIf="inputEmail.errors?.['minlength']">Email must be at least 4 characters!</p>
+          <p class="error-message" *ngIf="inputEmail.errors?.['required']">Email is required!</p>
+          <p class="error-message" *ngIf="inputEmail.errors?.['pattern']">Email format is not valid!</p>
+        </ng-container>
       </div>
       
       <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" id="password" name="password" placeholder="Enter your password">
+        <input type="password" id="password" name="password" placeholder="Enter your password" 
+        #inputPassword="ngModel" ngModel required minlength="5" pattern="[a-zA-Z0-9]*">
+     
+     
+        <ng-container *ngIf="inputPassword.invalid && !inputPassword.untouched">
+        <p class="error-message" *ngIf="inputPassword.errors?.['minlength']">Password must be at least 5 characters!</p>
+        <p class="error-message" *ngIf="inputPassword.errors?.['pattern']">Password format is not valid! No whitesapce allowed!</p>
+      </ng-container>
       </div>
+
+
+      
       <div class="form-group">
         <label for="confirm-password">Confirm Password</label>
-        <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password">
-      </div>
-      <div class="error-message">
-        <!-- Error message will be displayed here -->
-      </div>
-      <button type="submit">Register</button>
+        <input type="password" id="rePassword" name="rePassword" placeholder="Confirm your password"
+         #inputRepassword="ngModel" ngModel required minlength="5">
+    
+     
+         <ng-container *ngIf="inputPassword.touched">
+
+           <p class="error-message" *ngIf="inputPassword.errors?.['required']">Confirm Passowrd is required!</p>
+           <p class="error-message" *ngIf="inputPassword.value !== inputRepassword.value">Passwords do not match!</p>
+          </ng-container>
+          
+        </div>
+    
+      
+      <button [disabled]="form.invalid" >Register</button>
     </form>
+
+
+
 </main>
   

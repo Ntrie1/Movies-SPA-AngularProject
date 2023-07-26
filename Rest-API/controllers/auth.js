@@ -45,6 +45,7 @@ function register(req, res, next) {
 
 function login(req, res, next) {
     const { email, password } = req.body;
+    console.log(email,password)
 
     userModel.findOne({ email })
         .then(user => {
