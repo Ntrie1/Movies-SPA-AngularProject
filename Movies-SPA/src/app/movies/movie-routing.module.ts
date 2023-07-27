@@ -9,6 +9,7 @@ const routes: Routes = [
     path: 'catalogMovies',
     component: AllMoviesComponent
   },
+  
  
 ];
 
