@@ -22,7 +22,7 @@ export class RegisterComponent {
     const { username, email, password, rePassword } = form.value;
     
     this.auth.register(username, email, password, rePassword).subscribe(()=>{
-      this.router.navigate(['/login']);
+      this.router.navigate(['/home']);
     })
   }
 

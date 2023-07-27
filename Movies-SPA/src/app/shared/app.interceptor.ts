@@ -14,13 +14,16 @@ export class AppInterceptor implements HttpInterceptor{
 
         if(req.url.startsWith('/api')){
            req = req.clone({
-                url: req.url.replace('/api', apiUrl)
-            })
+                url: req.url.replace('/api', apiUrl),
+                withCredentials: true
+            });
         }
+
+        return next.handle(req)
 
     }
 }
-
+ 
 
 
 

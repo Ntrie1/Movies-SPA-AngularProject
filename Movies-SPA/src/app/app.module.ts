@@ -11,6 +11,8 @@ import { UserRoutingModule } from './user/user-routing.module';
 import {HttpClientModule} from '@angular/common/http'
 import { UserModule } from './user/user.module';
 import { appInterceptorProvider } from './shared/app.interceptor';
+import { SharedModule } from './shared/shared.module';
+import { MoviesModule } from './movies/movies.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { appInterceptorProvider } from './shared/app.interceptor';
     BrowserModule,
     AppRoutingModule,
     CoreModule,
+    SharedModule,
     UserModule,
+    MoviesModule,
     BrowserAnimationsModule,
     UserRoutingModule,
     HttpClientModule,
