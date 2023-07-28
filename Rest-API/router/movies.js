@@ -16,7 +16,13 @@ router.post('/create', async (req,res)=>{
         // owner: req.user._id,
     }
 
-    await movieModel.create({movieData});
+    try {
+        const createdMovie = await movieModel.create(movieData);
+        res.status(201).json(createdMovie);
+    } catch (error) {
+        console.error('Error creating movie:', error);
+        res.status(500).json({ error: 'Error creating movie' });
+    }
     
   
 })

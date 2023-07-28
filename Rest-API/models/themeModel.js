@@ -2,11 +2,11 @@ const mongoose = require('mongoose');
 const { ObjectId } = mongoose.Schema.Types;
 
 const themeSchema = new mongoose.Schema({
-    themeName: {
+    Title: {
         type: String,
         required: true
     },
-    subscribers: [{
+    subscribers: [{ 
         type: ObjectId,
         ref: "User"
     }],

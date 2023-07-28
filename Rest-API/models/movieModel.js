@@ -12,25 +12,25 @@ const movieSchema =  new mongoose.Schema({
         required: true,
     },
 
-    imageUrl: {
+    image: {
         type: String,
         required: true,
     },
 
-    releaseDate:{
-        type: String,
-        required: true,
-    },
+    // releaseDate:{
+    //     type: String,
+    //     required: true,
+    // },
 
     genre: {
         type: String,
         required: true
     },
 
-    bookmark: {
-        type: ObjectId,
-        ref: 'User'
-    } 
+    // bookmark: {
+    //     type: ObjectId,
+    //     ref: 'User'
+    // } 
     
 })
 
