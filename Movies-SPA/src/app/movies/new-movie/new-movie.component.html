@@ -30,7 +30,7 @@
       <div class="form-group">
         <label for="image">Image Url</label>
         <input type="text" id="image" name="image" placeholder="Enter your image" 
-        #inputImage="ngModel" ngModel required minlength="5" pattern="[a-zA-Z0-9]*">
+        #inputImage="ngModel" ngModel required minlength="5" >
      
      
         <ng-container *ngIf="inputImage.invalid && !inputImage.untouched">

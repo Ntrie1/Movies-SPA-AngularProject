@@ -27,10 +27,15 @@ const movieSchema =  new mongoose.Schema({
         required: true
     },
 
-    // bookmark: {
-    //     type: ObjectId,
-    //     ref: 'User'
-    // } 
+    bookmark: {
+        type: ObjectId,
+        ref: 'User'
+    }, 
+    
+    userId: {
+        type: ObjectId,
+        ref: "User"
+    }
     
 })
 
