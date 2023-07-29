@@ -1,18 +1,18 @@
 const express = require('express');
 const router = express.Router();
 const movieModel = require('../models/movieModel');
-const { auth } = require('../utils')
+const { auth } = require('../utils')     
 
 
 router.get('/', async (req,res)=>{
     
-    const allMovies = await movieModel.find().populate('userId');
+    const allMovies = await movieModel.find();
 
     res.json(allMovies)
 })
 
 router.post('/create', auth(), async (req,res)=>{
-    console.log(req.user)
+    // console.log(req.user)
     const { _id: userId } = req?.user;
     const movieData = {
         ...req.body,

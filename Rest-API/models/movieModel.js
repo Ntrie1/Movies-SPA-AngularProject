@@ -27,11 +27,11 @@ const movieSchema =  new mongoose.Schema({
         required: true
     },
 
-    bookmark: {
+    bookmarkedBy: {
         type: ObjectId,
         ref: 'User'
     }, 
-    
+
     userId: {
         type: ObjectId,
         ref: "User"
