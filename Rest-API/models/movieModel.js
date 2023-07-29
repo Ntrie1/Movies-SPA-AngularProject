@@ -27,7 +27,7 @@ const movieSchema =  new mongoose.Schema({
         required: true
     },
 
-    bookmarkedBy: {
+    bookmarkedBy: { 
         type: ObjectId,
         ref: 'User'
     }, 
