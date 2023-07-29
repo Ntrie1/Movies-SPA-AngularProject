@@ -37,6 +37,7 @@ const movieSchema =  new mongoose.Schema({
         ref: "User"
     }
     
+    
 })
 
 module.exports = mongoose.model('Movie', movieSchema)
