@@ -14,6 +14,7 @@ import { appInterceptorProvider } from './shared/app.interceptor';
 import { SharedModule } from './shared/shared.module';
 import { MoviesModule } from './movies/movies.module';
 
+
 @NgModule({
   declarations: [
     AppComponent,
