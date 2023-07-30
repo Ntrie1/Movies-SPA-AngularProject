@@ -1,5 +1,5 @@
 <main class="container">
-    <form #form="ngForm" (ngSubmit)="newThemeSubmitHandler(form)">
+    <form #form="ngForm" (ngSubmit)="newMovieSubmitHandler(form)">
 
       <h1>Add a Movie</h1>
      
@@ -54,6 +54,18 @@
           </ng-container>
           
         </div>
+
+        <div class="form-group">
+            <label for="date">Release Date</label>
+            <input type="date" id="date" name="date" placeholder="Enter your date" 
+            #inputDate="ngModel" ngModel required  >
+         
+         
+            <ng-container *ngIf="inputDate.invalid && !inputDate.untouched">
+            <p class="error-message" *ngIf="inputDate.errors?.['minlength']">Image must be at least 5 characters!</p>
+            <p class="error-message" *ngIf="inputDate.errors?.['pattern']">Image format is not valid! No whitesapce allowed!</p>
+          </ng-container>
+          </div>
     
       
       <button [disabled]="form.invalid" [style.opacity]=" form.invalid ? 0.5 : 1" >Submit</button>

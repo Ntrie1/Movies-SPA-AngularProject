@@ -29,13 +29,13 @@ article {
     color: var(--title-color);
     transition: color 0.3s ease-out;
   }
-  
+/*   
   figure {
     margin: 0;
     padding: 0;
     aspect-ratio: 16 / 9;
     overflow: hidden;
-  }
+  } */
   
   article img {
     max-width: 100%;

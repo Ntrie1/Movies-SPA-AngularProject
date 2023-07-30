@@ -36,10 +36,10 @@ const userSchema = new mongoose.Schema({
             message: props => `${props.value} must contains only latin letters and digits!`
         },
     },
-    movies: [{
-        type: ObjectId,
-        ref: "Movie"
-    }],
+    // movies: [{
+    //     type: ObjectId,
+    //     ref: "Movie"
+    // }],
 
     // themes: [{
     //     type: ObjectId,
@@ -58,7 +58,7 @@ userSchema.methods = {
 }
 
 userSchema.pre('save', function (next) {
-    if (this.isModified('password')) {
+    if (this.isModified('password')) { 
         bcrypt.genSalt(saltRounds, (err, salt) => {
             if (err) {
                 next(err);
