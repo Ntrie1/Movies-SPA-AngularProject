@@ -1,50 +1,114 @@
-body
-{
-  background-color:#141019;
-  background: radial-gradient(at 50% -20%, #908392, #0d060e) fixed;
-}
-
-
-#handboy
-{
-   animation: swing ease-in-out 1.3s infinite alternate;
-    transform-origin: 98% 98%;
-    transform-box: fill-box;
+@keyframes noise{
+    0% {background-position-y: 0px;}
+    100% {background-position-y: -420px;}
+    }
     
-}
-
-
-#girllight
-{
-   animation: swing ease-in-out 1.3s infinite alternate;
-    transform-origin: 0% 97%;
-    transform-box: fill-box;
-}
-
-#hairgirl
-{
-    animation: swinghair ease-in-out 1.3s infinite alternate;
-   transform-origin: 60% 0%;
-    transform-box: fill-box;
-  
-}
-
-#zero
-{
-  transform-origin:bottom;
-  transform-box:fill-box;
-  
-}
-
-/*************swing************/
-@keyframes swing {
-    0% { transform: rotate(10deg); }
-    100% { transform: rotate(-10deg); }
-}
-
-
-/*************swing hair************/
-@keyframes swinghair {
-    0% { transform: rotate(6deg); }
-    100% { transform: rotate(-6deg); }
-}
+    body, html{
+    overflow:hidden;
+    margin:0px;
+    background: rgb(31, 31, 31);
+    height:100vh;
+    box-shadow:0px 0px 122px 25px black inset;
+    background-image:url('https://i.imgur.com/eg7VIun.jpg');
+    background-repeat:repeat;
+    animation:noise 230ms steps(6) infinite;
+    
+    }
+    
+    .glitch-wrapper{
+    padding-top:180px;
+    width:100vw;
+    text-align:center;
+    animation:glitch 2s linear infinite;
+    margin-bottom:110px;
+    }
+    
+    
+    .glitch-text, button{
+    font-family: monospace;
+    font-weight:bold;
+    }
+    
+    .glitch-text::before{
+    content:'ERROR 404';
+    color:black;
+    text-shadow:0px 0px 5px 10px black !IMPORTANT;
+    -webkit-filter: blur(7px);
+    -moz-filter: blur(7px);
+    -o-filter: blur(7x);
+    -ms-filter: blur(7px);
+    filter: blur(7px);
+    display:block;
+    position:absolute;
+    z-index:-1;
+    font-size:132px;
+    left:0px;
+    right:0px;
+    margin-top:-30px;
+    opacity:.5;
+    }
+    
+    .glitch-text{
+    position:relative;
+    z-index:2;
+    opacity:.9;
+    margin:0 auto;
+    text-shadow:0px 0px 3px rgb(3, 114, 103);
+    animation:glitch 3s infinite;
+    cursor:pointer;
+    font-size:52px;
+    color:rgb(0, 128, 94);
+    }
+    
+    
+    button{
+    display:block;
+    opacity:.6;
+    box-shadow:0px 0px 3px 6px white,0px 0px 3px white;
+    text-shadow:0px 0px 1px black;
+    background:white;
+    border:0px;
+    padding:7px;
+    margin:0 auto;
+    outline:none;
+    cursor:pointer;
+    margin-top: 80px;
+    margin-bottom: 350px;
+    font-size:20px;
+    transition:200ms;
+    }
+    
+    button:hover, button:focus, button:active {
+    box-shadow:0px 0px 3px 6px rgb(165,207,227);
+    
+    background:rgb(0, 34,38);
+    color:white;
+    transition:200ms;
+    border-top-left-radius:5px;
+    border-bottom-right-radius:5px;
+    }
+     
+    
+    .paused{
+    animation-play-state: paused;
+    }
+    
+    
+ /* JUST RANDOM VALUES HERE! */
+    @keyframes glitch{
+     3%{text-shadow:7px 7px 0px red;}
+    6%{text-shadow:-9px 4px 0px blue;transform:translate(4px,-10px) skewX(3240deg);}
+    7%{text-shadow:3px -4px 0px green;}
+    9%{text-shadow:0px 0px 3px white;transform:translate(0px,0px) skewX(0deg);}
+    2% , 54%{transform:translateX(0px) skew(0deg);}
+    55%{transform:translate(-2px,6px) skew(-5530deg);}
+    56%{text-shadow:0px 0px 3px white;transform:translate(0px,0px) skew(0deg);}
+    57%{text-shadow:7px 7px 0px red;transform:translate(4px,-10px) skew(-70deg);}
+    58%{text-shadow:0px 0px 3px white;transform:translate(0px,0px) skew(0deg);}
+    62%{text-shadow:3px -4px 0px green;transform:translate(0px,20px) skew(0deg);}
+    63%{text-shadow:0px 0px 3px white;transform:translate(4px,-2px) skew(0deg);}
+    64%{transform:translate(1px,3px); }
+    65%{transform:translate(-7px,2px); }
+    66%{transform:translate(0px,0px) skew(0deg);}
+    
+    } 
