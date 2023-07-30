@@ -1,6 +1,8 @@
 import { UserId } from "./userId";
 
  export interface Movie{
+    upVotes: number,
+    downVotes: number,
     _id: string,
     title: string,
     description: string,
