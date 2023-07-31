@@ -17,4 +17,8 @@ export class MovieService {
     return this.http.get<Movie[]>('/api/movies');
   }
 
+  getMovieById(movieId: string){
+    return this.http.get<Movie>(`/api/movies/${movieId}`);
+  }
+
 }

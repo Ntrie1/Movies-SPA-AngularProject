@@ -1,1 +1,20 @@
-<p>current-movie works!</p>
+<div class="movie-details" *ngIf="movie">
+    <div class="movie-info">
+      <h2>{{ movie.title }}</h2>
+      <p>Genre: {{ movie.genre }}</p>
+      <p>Release Date: {{movie.date}}</p>
+      <p>Description: {{ movie.description }}</p>
+      <div class="vote-buttons">
+        <!-- <button (click)="upvote()" class="vote-btn">Upvote</button>
+        <button (click)="downvote()" class="vote-btn">Downvote</button> -->
+      </div>
+      <div class="vote-count">
+        <p>Upvotes: {{ movie.upVotes }}</p>
+        <p>Downvotes: {{ movie.downVotes }}</p>
+      </div>
+    </div>
+    <div class="movie-image">
+      <img src="{{ movie.image }}" alt="Movie Image">
+    </div>
+  </div>
+ 

@@ -1,0 +1,67 @@
+.movie-details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: #E7F6FC;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgb(0, 0, 0);
+    width: 750px;
+    margin: 100px auto;
+  }
+  
+  .movie-info {
+    flex: 1;
+    margin-right: 20px;
+  }
+  
+  .movie-image {
+    flex: 1;
+  }
+  
+  h2 {
+    margin: 0;
+    font-size: 24px;
+  }
+  
+  p {
+    margin: 5px 0;
+ 
+  }
+  
+  
+  .vote-buttons {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+  }
+  
+  .vote-btn {
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .vote-count {
+    margin-top: 20px;
+  }
+  
+  .vote-count p {
+    margin: 5px 0;
+    font-weight: bold;
+  }
+  
+  /* Set the aspect ratio of the image */
+  .movie-image img {
+    width: 100%;
+  
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    object-fit: cover;
+  }
+
+  
+  

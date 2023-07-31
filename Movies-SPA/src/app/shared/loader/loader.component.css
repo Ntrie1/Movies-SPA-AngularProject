@@ -4,9 +4,11 @@
     position: relative;
     width: 80px;
     height: 80px;
+    height: 100vh;
+    margin: auto;
   }
   .lds-spinner div {
-    transform-origin: 40px 40px;
+    transform-origin: 100px 100px;
     animation: lds-spinner 1.2s linear infinite;
   }
   .lds-spinner div:after {
@@ -15,10 +17,10 @@
     position: absolute;
     top: 3px;
     left: 37px;
-    width: 6px;
-    height: 18px;
-    border-radius: 20%;
-    background: #cef;
+    width: 20px;
+    height: 40px;
+    border-radius: 80%;
+    background: rgb(9, 72, 103);
   }
   .lds-spinner div:nth-child(1) {
     transform: rotate(0deg);
