@@ -27,4 +27,13 @@ export class CurrentMovieComponent implements OnInit {
   }
 
 
+  upvote(): void{
+
+  }
+
+  downvote():void{
+    
+  }
+
+
 }

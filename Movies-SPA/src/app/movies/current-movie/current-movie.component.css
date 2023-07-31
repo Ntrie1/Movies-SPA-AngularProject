@@ -63,5 +63,23 @@
     object-fit: cover;
   }
 
+
+  .movie-info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .info-row {
+    display: flex;
+    align-items: center;
+  }
+  
+  .info-row h2,
+  .info-row h3,
+  .info-row p {
+    margin-right: 5px; /* Adjust the spacing between the label and the data */
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+  }
   
   
