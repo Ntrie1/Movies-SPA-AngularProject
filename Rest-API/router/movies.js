@@ -28,6 +28,16 @@ router.post('/create', auth(), async (req,res)=>{
     }
     
   
+});
+
+
+router.get('/:movieId', async (req,res)=>{
+    const { movieId } =  req.params;
+
+    const movie = await movieModel.findById(movieId);
+    res.json(movie);
+
+
 })
 
 
