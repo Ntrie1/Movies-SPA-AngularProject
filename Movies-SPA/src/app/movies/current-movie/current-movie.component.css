@@ -45,6 +45,15 @@
     border-radius: 5px;
     cursor: pointer;
   }
+
+  .bookmark-btn{
+    padding: 8px 16px;
+    background-color: #028476;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
   
   .vote-count {
     margin-top: 20px;

@@ -21,4 +21,8 @@ export class MovieService {
     return this.http.get<Movie>(`/api/movies/${movieId}`);
   }
 
+  bookmarkMovie(movieId: string){
+    return this.http.post(`/api/movies/${movieId}/bookmark`, {})
+  }
+
 }

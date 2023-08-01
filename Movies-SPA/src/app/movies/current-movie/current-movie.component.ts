@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MovieService } from 'src/app/services/movie.service';
 import { Movie } from 'src/app/types/movie';
 
@@ -13,7 +13,10 @@ export class CurrentMovieComponent implements OnInit {
   isLoading: boolean = true;
   movie: Movie | undefined;
 
-  constructor(private movieService: MovieService, private activatedRoute: ActivatedRoute) { }
+  constructor(
+    private movieService: MovieService, 
+    private activatedRoute: ActivatedRoute,
+    private router: Router) { }
 
 
 
@@ -32,7 +35,14 @@ export class CurrentMovieComponent implements OnInit {
   }
 
   downvote():void{
-    
+
+  }
+
+  bookmark(): void{
+    const movieId = this.activatedRoute.snapshot.params['movieId']
+    this.movieService.bookmarkMovie(movieId).subscribe(()=>{
+      this.router.navigate(['/home'])
+    })
   }
 
 
