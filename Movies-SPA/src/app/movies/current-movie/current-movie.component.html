@@ -25,7 +25,7 @@
         <p>Upvotes: {{ movie.upVotes }}</p>
         <p>Downvotes: {{ movie.downVotes }}</p>
       </div> -->
-      <div class="info-row">
+      <div class="info-row" *ngIf="!isBookmarked">
         <h3>Bookmark: </h3>
         <button (click)="bookmark()" class="bookmark-btn">Bookmark Here</button>
       </div>

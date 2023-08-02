@@ -10,6 +10,7 @@ import { Movie } from 'src/app/types/movie';
 })
 export class CurrentMovieComponent implements OnInit {
 
+  isBookmarked: boolean = false;
   isLoading: boolean = true;
   movie: Movie | undefined;
 
@@ -42,6 +43,7 @@ export class CurrentMovieComponent implements OnInit {
     const movieId = this.activatedRoute.snapshot.params['movieId']
     this.movieService.bookmarkMovie(movieId).subscribe(()=>{
       this.router.navigate(['/home'])
+      this.isBookmarked = true;
     })
   }
 
