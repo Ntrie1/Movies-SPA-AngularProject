@@ -22,7 +22,7 @@ export class MovieService {
   }
 
   bookmarkMovie(movieId: string){
-    return this.http.post(`/api/movies/${movieId}/bookmark`, {})
+    return this.http.put(`/api/movies/${movieId}/bookmark`, {})
   }
 
 }

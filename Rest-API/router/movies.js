@@ -41,7 +41,7 @@ router.get('/:movieId', async (req,res)=>{
 })
 
 
-router.post('/:movieId/bookmark',auth(), async (req, res)=>{
+router.put('/:movieId/bookmark',auth(), async (req, res)=>{
     const { movieId } =  req.params;
     const userId = req.user?._id;
 
