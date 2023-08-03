@@ -3,21 +3,25 @@ import { RouterModule, Routes } from '@angular/router';
 import { AllMoviesComponent } from './all-movies/all-movies.component';
 import { NewMovieComponent } from './new-movie/new-movie.component';
 import { CurrentMovieComponent } from './current-movie/current-movie.component';
+import { AuthActivate } from '../core/guards/auth.activate';
 
 
 
 const routes: Routes = [
   {
     path: 'catalogMovies',
-    component: AllMoviesComponent
+    component: AllMoviesComponent,
+    canActivate: [AuthActivate]
   },
   {
     path: 'createMovie',
-    component: NewMovieComponent
+    component: NewMovieComponent,
+    canActivate: [AuthActivate]
   },
   {
     path: 'movies/:movieId',
-    component: CurrentMovieComponent
+    component: CurrentMovieComponent,
+    canActivate: [AuthActivate]
   }
   
  
