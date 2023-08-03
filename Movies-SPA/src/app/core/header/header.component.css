@@ -42,3 +42,7 @@ nav ul li a {
     width: auto; 
     margin: 0px; 
   }
+
+  .logout{
+    cursor: pointer;
+  }
