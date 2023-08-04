@@ -61,8 +61,11 @@ router.put('/:movieId/bookmark',auth(), async (req, res)=>{
     
     const isMovieBookmarked = user.movies.some((m) => m._id.toString() === movieId.toString());
     
-    if (isMovieBookmarked) return;
-    user.movies.push(movie);
+    if (isMovieBookmarked){
+        return res.status(400).json({ error: 'Movie already bookmarked' });
+      }
+
+    user.movies.push(movie); 
     await user.save();
     console.log(user.movies)
 
