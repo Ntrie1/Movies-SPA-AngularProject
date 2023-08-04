@@ -19,7 +19,7 @@ import { SharedModule } from "../shared/shared.module";
         CommonModule,
         MovieRoutingModule,
         FormsModule,
-        SharedModule
+        SharedModule,
     ]
 })
 export class MoviesModule { }

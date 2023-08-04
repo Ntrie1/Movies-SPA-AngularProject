@@ -13,6 +13,7 @@ import { UserModule } from './user/user.module';
 import { appInterceptorProvider } from './shared/app.interceptor';
 import { SharedModule } from './shared/shared.module';
 import { MoviesModule } from './movies/movies.module';
+import { MatSnackBarModule } from "@angular/material/snack-bar";
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { MoviesModule } from './movies/movies.module';
     UserRoutingModule,
     AppRoutingModule,
     HttpClientModule,
+    MatSnackBarModule,
   ],
   providers: [appInterceptorProvider],
   bootstrap: [AppComponent]
