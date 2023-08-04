@@ -50,9 +50,7 @@ router.put('/:movieId/bookmark',auth(), async (req, res)=>{
       }
 
     const movie = await movieModel.findById(movieId);
-    console.log('Movie:', movie);
     const user = await userModel.findById(userId);
-    console.log('User:', user);
 
     
     if (!user.movies) {
