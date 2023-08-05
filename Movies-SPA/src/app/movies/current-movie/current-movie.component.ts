@@ -14,6 +14,7 @@ export class CurrentMovieComponent implements OnInit {
   isBookmarked: boolean = false;
   isLoading: boolean = true;
   movie: Movie | undefined;
+  errorMessage: string = '';
 
   constructor(
     private movieService: MovieService,
@@ -54,10 +55,11 @@ export class CurrentMovieComponent implements OnInit {
         
       },
       (error) => {
-        this.snackBar.open(error.error.error, 'Close', {
-          duration: 5000, 
-          verticalPosition: 'top',
-        });
+        this.errorMessage =  error.error.error
+        // this.snackBar.open(error.error.error, 'Close', {
+        //   duration: 5000, 
+        //   verticalPosition: 'top',
+        // });
       }
     )
   }

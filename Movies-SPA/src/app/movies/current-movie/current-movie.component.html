@@ -27,7 +27,8 @@
       </div> -->
       <div class="info-row" *ngIf="!isBookmarked">
         <h3>Bookmark: </h3>
-        <button (click)="bookmark()" class="bookmark-btn">Bookmark Here</button>
+        <button (click)="bookmark()" class="bookmark-btn" *ngIf="!errorMessage">Bookmark Here</button>
+        <p class="error-message" *ngIf="errorMessage">{{errorMessage}}</p>
       </div>
     </div>
     <div class="movie-image">
