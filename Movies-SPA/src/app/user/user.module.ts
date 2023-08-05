@@ -10,7 +10,7 @@ import { UserRoutingModule } from './user-routing.module';
 @NgModule({
   declarations: [
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
   ],
   imports: [
     CommonModule, 

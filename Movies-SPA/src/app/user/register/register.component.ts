@@ -9,17 +9,20 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
+  password!: string;
+  rePassword: string | undefined;
+  
 
+  constructor( private auth: AuthService, private router: Router ) { }
 
-  constructor( private auth: AuthService, private router: Router ) {
+  
 
-    
-  }
 
   register(form: NgForm): void{
     if(form.invalid) return;
 
     const { username, email, password, rePassword } = form.value;
+    this.password = password;
     
     this.auth.register(username, email, password, rePassword).subscribe(()=>{
       this.router.navigate(['/home']);

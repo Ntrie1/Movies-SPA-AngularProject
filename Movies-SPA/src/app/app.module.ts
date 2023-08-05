@@ -14,6 +14,7 @@ import { appInterceptorProvider } from './shared/app.interceptor';
 import { SharedModule } from './shared/shared.module';
 import { MoviesModule } from './movies/movies.module';
 import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
     AppRoutingModule,
     HttpClientModule,
     MatSnackBarModule,
+    FormsModule
   ],
   providers: [appInterceptorProvider],
   bootstrap: [AppComponent]
