@@ -109,9 +109,13 @@ async function userBookmarks(req,res) {
     const userId = req.user?._id;
     const user = await userModel.findById(userId);
     
-    if(!user.movies){
+    if (!user) {
+        return res.status(404).json({ error: 'User not found' });
+      }
+    
+      if (!user.movies) {
         return res.status(400).json({ error: 'User does not have bookmarked movies' });
-    }
+      }
 
     bookmarkedMovies.push(user.movies)
 
