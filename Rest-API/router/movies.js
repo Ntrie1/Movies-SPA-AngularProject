@@ -65,7 +65,7 @@ router.put('/:movieId/bookmark',auth(), async (req, res)=>{
 
     user.movies.push(movie); 
     await user.save();
-    console.log(user.movies)
+  
 
     // if(user.movies?._id == movie._id) return;
     // user.movies.push(movie); 
