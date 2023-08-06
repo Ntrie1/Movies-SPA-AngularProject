@@ -102,7 +102,7 @@ function editProfileInfo(req, res, next) {
 }
 
 
-async function userBookmars(req,res) {
+async function userBookmarks(req,res) {
     let bookmarkedMovies = [];
 
     
@@ -128,5 +128,5 @@ module.exports = {
     logout,
     getProfileInfo,
     editProfileInfo,
-    userBookmars
+    userBookmarks
 }
