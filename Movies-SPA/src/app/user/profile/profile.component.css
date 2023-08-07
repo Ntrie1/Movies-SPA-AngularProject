@@ -114,3 +114,34 @@ body {
   
   
   /* Add more styles here as needed */
+
+  .no-movies {
+    border-top: 4px solid #028476;
+    border-bottom: 4px solid #028476;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.20),
+        0 2px 10px 0 rgba(0, 0, 0, 0.586);
+    background-color:#A5CFE3;
+    width: auto;
+    height: 100px;
+    margin: auto;
+}
+
+.no-movies p {
+    font-size: 30px;
+    text-align: center;
+    padding-right: 40px;
+    padding-left: 40px;
+    font-weight: 600;
+    color: #00221C;
+ 
+}
+
+
+.movie-card:has(:hover, :focus) {
+  --img-scale: 1.1;
+  --title-color: #28666e;
+  --link-icon-translate: 0;
+  --link-icon-opacity: 1;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
