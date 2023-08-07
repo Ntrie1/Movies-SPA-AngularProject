@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable, OnDestroy } from '@angular/core';
 import { User } from '../types/user';
-import { BehaviorSubject, Subscription, tap } from 'rxjs';
+import { BehaviorSubject, Subscription, catchError, tap, throwError } from 'rxjs';
 import { Movie } from '../types/movie';
 
 @Injectable({
@@ -55,6 +55,17 @@ export class AuthService implements OnDestroy {
     .pipe(tap((user)=> {
       this.user$$.next(user)
       localStorage.setItem('user', JSON.stringify(user));
+    }),
+    catchError((error) => {
+      if (error.status === 401) {
+        // If the status is 401 Unauthorized, handle the error here
+        // You can extract the error message from the error response and return it
+        const errorMessage = error.error?.message || 'Unauthorized';
+        return throwError(errorMessage);
+      } else {
+        // For other error status codes, just propagate the error as is
+        return throwError(error);
+      }
     })
       
       );
@@ -80,7 +91,22 @@ export class AuthService implements OnDestroy {
 
 
    getUserBookmarks(){
-    return this.http.get<Movie[]>('/api/users/profile/bookmarks');
+    return this.http.get<Movie[]>('/api/users/profile/bookmarks')
+           .pipe(
+            catchError((error: HttpErrorResponse) => {
+              let errorMessage = 'An error occurred while fetching bookmarked movies. Please try again later.';
+
+              if(error.status === 404){
+                errorMessage = 'User not found!'
+              } 
+              else if(error.status === 400){
+                errorMessage = 'No movies have been bookmarked yet!'
+              } 
+
+              return throwError(errorMessage);
+
+            } )
+           )
 
 
    }

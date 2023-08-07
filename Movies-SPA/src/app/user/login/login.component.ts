@@ -12,16 +12,28 @@ export class LoginComponent {
 
   constructor(private auth: AuthService, private router: Router) { }
 
+  errorMessage: string | null =  null;
+
   login(form: NgForm){
     if(form.invalid) return;
 
     const { email, password } = form.value;
     console.log(email, password)
 
-    this.auth.login(email, password).subscribe(()=>{
-
+    this.auth.login(email, password).subscribe(
+      ()=>{
       this.router.navigate(['/home'])
+    },
+    (error) => {
+      // Handle the error here
+      // You can show the error message to the user
+      this.errorMessage =  error;
+      console.error(error); // Log the error for debugging
+      // Show the error message to the user using a snackbar or alert
+      // For example, if you have a snackbar service:
+    
     }
+
     )
 
 
