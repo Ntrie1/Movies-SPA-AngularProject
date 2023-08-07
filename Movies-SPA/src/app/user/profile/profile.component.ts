@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { MovieService } from 'src/app/services/movie.service';
 import { Movie } from 'src/app/types/movie';
 import { Profile } from 'src/app/types/userProfile';
 
@@ -22,35 +24,46 @@ export class ProfileComponent implements OnInit {
   bookmarkedMovies: Movie[] = [];
   errorMessage: string | null = null; 
 
-  constructor( private authService: AuthService) { }
+  constructor( 
+    private authService: AuthService, 
+    private movieService: MovieService,
+    private router: Router ) { }
 
 
   
   
   ngOnInit(): void {
+   this.fetchBookmarkedMovies();
+  }
+
+  fetchBookmarkedMovies(): void {
     this.authService.getUserBookmarks().subscribe(
-      (moviesData) =>{
+      (moviesData) => {
         this.bookmarkedMovies = moviesData;
         this.errorMessage = null;
-        
+
         if (this.bookmarkedMovies.length === 0) {
           this.errorMessage = 'No movies have been bookmarked yet!';
         }
-        const { username, email } = this.authService.user!;
-        this.profileDetails =  { username, email };
-
-      console.log('Error =>', this.errorMessage)
-      console.log('Moives =>', this.bookmarkedMovies)
-     
-    },
-    (error) => {
-      this.errorMessage = error;
-      this.bookmarkedMovies = [];
-      console.log('Error occured:', this.errorMessage)
-
-    }
-    
-    )
-    
+      },
+      (error) => {
+        this.errorMessage = error;
+        this.bookmarkedMovies = [];
+        console.log('Error occurred:', this.errorMessage);
+      }
+    );
   }
+
+
+  unfave(movieId: string):void{
+    this.movieService.removeBookmark(movieId).subscribe(() =>{
+     this.fetchBookmarkedMovies(); 
+      this.router.navigate(['/profile'])
+    }
+    )
+
+    console.log(movieId)
+  }
+
+
 }

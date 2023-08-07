@@ -15,16 +15,17 @@
           <div class="movie-thumbnail">
             <!-- Movie thumbnail goes here -->
             <!-- You can use an <img> tag for the movie poster -->
-            <img src="{{movie.image}}" alt="">
+            <img src="{{movie.image}}">
           </div>
           <div class="movie-details">
             <h4 class="movie-title">{{movie.title}}</h4>
             <p class="movie-genre">{{movie.genre}}</p>
             <p class="movie-description">{{movie.description}}</p>
-            <div class="movie-rating">
+            <!-- <div class="movie-rating">
               <span class="rating-value">8.5</span>
               <span class="rating-out-of">/10</span>
-            </div>
+            </div> -->
+            <button (click)="unfave(movie._id)" class="bookmark-btn" *ngIf="!errorMessage">Remove</button>
           </div>
           
         </div>

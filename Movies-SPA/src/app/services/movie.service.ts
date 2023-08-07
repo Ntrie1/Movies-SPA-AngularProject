@@ -25,4 +25,8 @@ export class MovieService {
     return this.http.put(`/api/movies/${movieId}/bookmark`, {})
   }
 
+  removeBookmark(movieId: string){
+    return this.http.put('/api/movies/removeBookmark', {movieId})
+  }
+
 }
