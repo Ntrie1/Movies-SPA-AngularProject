@@ -5,6 +5,7 @@ const {
 
 const utils = require('../utils');
 const { authCookieName } = require('../app-config');
+const movieModel = require('../models/movieModel');
 
 const bsonToJson = (data) => { return JSON.parse(JSON.stringify(data)) };
 const removePassword = (data) => {
@@ -117,7 +118,15 @@ async function userBookmarks(req,res) {
         return res.status(400).json({ error: 'User does not have bookmarked movies' });
       }
 
-    bookmarkedMovies.push(user.movies)
+      for (const movieId of user.movies) {
+        const movie = await movieModel.findById(movieId);
+
+        if(movie){
+            bookmarkedMovies.push(movie)
+        }
+      }
+
+   
 
     res.json(bookmarkedMovies)
 
