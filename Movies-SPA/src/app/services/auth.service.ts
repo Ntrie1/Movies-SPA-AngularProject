@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, OnDestroy } from '@angular/core';
 import { User } from '../types/user';
 import { BehaviorSubject, Subscription, tap } from 'rxjs';
+import { Movie } from '../types/movie';
 
 @Injectable({
   providedIn: 'root'
@@ -76,6 +77,13 @@ export class AuthService implements OnDestroy {
         .get<User>('/api/users/profile', {})
         .pipe(tap((user) => this.user$$.next(user)));
 }
+
+
+   getUserBookmarks(){
+    return this.http.get<Movie[]>('/api/users/profile/bookmarks');
+
+
+   }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
