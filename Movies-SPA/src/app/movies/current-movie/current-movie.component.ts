@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MovieService } from 'src/app/services/movie.service';
 import { Movie } from 'src/app/types/movie';
-import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-current-movie',
@@ -15,22 +14,28 @@ export class CurrentMovieComponent implements OnInit {
   isLoading: boolean = true;
   movie: Movie | undefined;
   errorMessage: string = '';
+  isOwner: boolean = true;
 
   constructor(
     private movieService: MovieService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private snackBar: MatSnackBar) { }
+    ) { }
 
 
 
   ngOnInit(): void {
-    const movieId = this.activatedRoute.snapshot.params['movieId']
+    this.fetchMovieData()
+
+  }
+
+  fetchMovieData(){
+    const movieId = this.activatedRoute.snapshot.params['movieId'];
 
     this.movieService.getMovieById(movieId).subscribe((movieData) =>
+
       this.movie = movieData
     )
-
   }
 
 
@@ -49,9 +54,7 @@ export class CurrentMovieComponent implements OnInit {
         this.router.navigate(['/profile'])
         this.isBookmarked = true
 
-        this.snackBar.open('Movie bookmarked successfully', 'Close', {
-          duration: 3000, 
-        }) 
+        
         
       },
       (error) => {
@@ -63,6 +66,29 @@ export class CurrentMovieComponent implements OnInit {
       }
     )
   }
+
+
+  deleteMovie(): void {
+      const movieId = this.activatedRoute.snapshot.params['movieId'];
+     
+      this.movieService.deleteMovie(movieId).subscribe(
+        () => {
+          this.router.navigate(['/movies']);
+        },
+        (error) => {
+          console.log(error)
+          if (error.status === 403) {
+           this.isOwner =  false;
+           console.log('error occured!')
+          
+          } else {
+            this.errorMessage = error.error.error;
+          }
+        }
+      );
+    
+
+    }
 
 
 }

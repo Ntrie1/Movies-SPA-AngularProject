@@ -53,6 +53,31 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-right: 10px;
+    margin-left: 10px;
+    transition:
+    box-shadow 0.3s ;
+  }
+
+  .bookmark-btn:hover{
+    box-shadow: 0 4px 8px rgb(0, 0, 0);
+
+  }
+
+  .delete-btn{
+    padding: 8px 16px;
+    background-color: #028476;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+
+  .delete-btn:hover{
+    background-color: red;
+    box-shadow: 0 4px 8px rgb(0, 0, 0);
   }
   
   .vote-count {

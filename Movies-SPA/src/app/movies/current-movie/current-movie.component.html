@@ -30,6 +30,7 @@
         <button (click)="bookmark()" class="bookmark-btn" *ngIf="!errorMessage">Bookmark Here</button>
         <p class="error-message" *ngIf="errorMessage">{{errorMessage}}</p>
       </div>
+      <button (click)="deleteMovie()" class="delete-btn" *ngIf="isOwner" >Delete</button>
     </div>
     <div class="movie-image">
       <img src="{{ movie.image }}" alt="Movie Image">
