@@ -5,8 +5,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class SlicePipe implements PipeTransform {
 
-  transform(value: unknown, ...args: unknown[]): unknown {
-    return null;
+  transform(value: string, maxCount = 100): unknown {
+    return `${value.substring(0, maxCount)}${value.length > maxCount ? '...' : ''}`
   }
 
 }

@@ -16,6 +16,7 @@ import { SlicePipe } from './pipes/slice.pipe';
   ],
   exports:[
     LoaderComponent,
+    SlicePipe
     
   ]
 })
