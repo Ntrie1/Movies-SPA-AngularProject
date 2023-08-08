@@ -46,7 +46,7 @@ export class CurrentMovieComponent implements OnInit {
     const movieId = this.activatedRoute.snapshot.params['movieId']
     this.movieService.bookmarkMovie(movieId).subscribe(
       () => {
-        this.router.navigate(['/home'])
+        this.router.navigate(['/profile'])
         this.isBookmarked = true
 
         this.snackBar.open('Movie bookmarked successfully', 'Close', {

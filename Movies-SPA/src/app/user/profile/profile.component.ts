@@ -34,6 +34,8 @@ export class ProfileComponent implements OnInit {
   
   ngOnInit(): void {
    this.fetchBookmarkedMovies();
+   const { username, email } = this.authService.user!;
+   this.profileDetails  = {username, email};
   }
 
   fetchBookmarkedMovies(): void {
