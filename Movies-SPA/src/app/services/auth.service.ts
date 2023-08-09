@@ -58,12 +58,11 @@ export class AuthService implements OnDestroy {
     }),
     catchError((error) => {
       if (error.status === 401) {
-        // If the status is 401 Unauthorized, handle the error here
-        // You can extract the error message from the error response and return it
+       
         const errorMessage = error.error?.message || 'Unauthorized';
         return throwError(errorMessage);
       } else {
-        // For other error status codes, just propagate the error as is
+
         return throwError(error);
       }
     })

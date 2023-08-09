@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Movie } from '../types/movie';
-import { BehaviorSubject, Subscription, catchError, tap, throwError } from 'rxjs';
+import { catchError, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -19,17 +19,7 @@ export class MovieService {
   }
 
   getMovieById(movieId: string){
-    return this.http.get<Movie>(`/api/movies/${movieId}`).pipe(
-      catchError((error: HttpErrorResponse) => {
-        if(error.status === 403){
-          const errorMessage = 'You are not authorized to delete this movie!'
-          return throwError(errorMessage);
-        }
-        return throwError(error);
-         // Rethrow the error to propagate to the component
-      })
-    )
-      
+    return this.http.get<Movie>(`/api/movies/${movieId}`);
   }
 
   bookmarkMovie(movieId: string){
@@ -42,6 +32,22 @@ export class MovieService {
 
   deleteMovie(movieId: string){
     return this.http.delete(`/api/movies/${movieId}`)
+    .pipe(
+      catchError((error: HttpErrorResponse) => {
+        let errorMessage = 'An error occurred while fetching bookmarked movies. Please try again later.';
+
+        if(error.status === 404){
+          errorMessage = 'Movie not found!'
+        } 
+        else if(error.status === 403){
+          errorMessage = 'You are not authorized to delete this movie!'
+        } 
+
+        return throwError(errorMessage);
+
+      } )
+     )
   }
+  
 
 }
