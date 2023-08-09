@@ -76,8 +76,9 @@ router.put('/:movieId/bookmark',auth(), async (req, res)=>{
 })
 
 
+
   router.put('/removeBookmark', auth(), async (req, res) => {
-    const { movieId } = req.body; // Assuming the movieId is sent in the request body
+    const { movieId } = req.body; 
   
     if (!movieId) {
       return res.status(400).json({ error: 'Movie ID not provided' });
@@ -103,6 +104,37 @@ router.put('/:movieId/bookmark',auth(), async (req, res)=>{
       return res.status(200).json({ message: 'Movie removed from bookmarks successfully' });
     } catch (error) {
       return res.status(500).json({ error: 'Something went wrong' });
+    }
+  });
+
+
+  router.delete('/:movieId', auth(), async (req, res) => {
+    const { movieId } = req.params;
+    const userId = req.user?._id;
+
+
+   
+  
+    try {
+      const movie = await movieModel.findById(movieId);
+
+  
+      if (!movie) {
+        return res.status(404).json({ error: 'Movie not found' });
+      }
+  
+      if (movie.userId.toString() !== userId.toString()) {
+  
+        return res.status(403).json({ error: 'You are not authorized to delete this movie!' });
+      }
+
+      console.log( movie.userId.toString())
+      console.log( userId.toString());
+  
+      await movie.remove();
+      res.status(204).send();
+    } catch (error) {
+      res.status(500).json({ error: 'An error occurred while deleting the movie' });
     }
   });
 
