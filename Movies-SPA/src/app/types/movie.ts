@@ -8,7 +8,7 @@ import { UserId } from "./userId";
     description: string,
     image: string,
     genre: string,
-    useeId: UserId,
+    userId: UserId,
     date: string,
     bookmarkedBy?: string; 
     __v: number;
