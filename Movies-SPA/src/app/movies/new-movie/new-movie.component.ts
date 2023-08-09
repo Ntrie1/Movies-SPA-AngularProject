@@ -15,7 +15,7 @@ export class NewMovieComponent {
     if(form.invalid) return;
   
     const { title, description, image, genre, date } = (form.value);
-    console.log(title, description, image, genre, date)
+   
 
     this.apiService.createMovie( title, description, image, genre, date)
     .subscribe(() =>{
