@@ -31,6 +31,7 @@
         <p class="error-message" *ngIf="errorMessage">{{errorMessage}}</p>
       </div>
       <button (click)="deleteMovie()" class="delete-btn" *ngIf="isOwner" >Delete</button>
+      <p class="error-message" *ngIf="errorMessage" >{{errorMessage}}</p>
     </div>
     <div class="movie-image">
       <img src="{{ movie.image }}" alt="Movie Image">

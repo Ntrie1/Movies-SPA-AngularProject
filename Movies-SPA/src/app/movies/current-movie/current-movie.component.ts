@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MovieService } from 'src/app/services/movie.service';
 import { Movie } from 'src/app/types/movie';
+import { MatSnackBar } from "@angular/material/snack-bar";
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-current-movie',
@@ -14,29 +16,42 @@ export class CurrentMovieComponent implements OnInit {
   isLoading: boolean = true;
   movie: Movie | undefined;
   errorMessage: string = '';
-  isOwner: boolean = true;
+  isOwner: boolean = false;
 
   constructor(
     private movieService: MovieService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
+    private authService: AuthService,
     ) { }
 
 
 
   ngOnInit(): void {
-    this.fetchMovieData()
+    const movieId = this.activatedRoute.snapshot.params['movieId']
+    const userId = this.authService.user?._id;
 
-  }
-
-  fetchMovieData(){
-    const movieId = this.activatedRoute.snapshot.params['movieId'];
-
-    this.movieService.getMovieById(movieId).subscribe((movieData) =>
-
+    this.movieService.getMovieById(movieId).subscribe(
+      (movieData) =>{
       this.movie = movieData
+
+      if(userId && this.movie.userId.toString() === userId){
+        this.isOwner = true;
+      }
+
+    },
+    (error) =>{
+       this.errorMessage = error;
+       console.log(error);
+    }
+    
+    
     )
+      
+        
   }
+
+  
 
 
   upvote(): void {
@@ -69,26 +84,22 @@ export class CurrentMovieComponent implements OnInit {
 
 
   deleteMovie(): void {
-      const movieId = this.activatedRoute.snapshot.params['movieId'];
-     
-      this.movieService.deleteMovie(movieId).subscribe(
-        () => {
-          this.router.navigate(['/movies']);
-        },
-        (error) => {
-          console.log(error)
-          if (error.status === 403) {
-           this.isOwner =  false;
-           console.log('error occured!')
-          
-          } else {
-            this.errorMessage = error.error.error;
-          }
-        }
-      );
-    
+    const movieId = this.activatedRoute.snapshot.params['movieId'];
 
-    }
+    this.movieService.deleteMovie(movieId).subscribe(
+      () => {
+        this.router.navigate(['/catalogMovies']);
+      },
+      (error) => {
+        if (error.status === 403) {
+          // Handle 403 error
+        } else {
+          this.errorMessage = error.error.error;
+        }
+      }
+    );
+  }
+
 
 
 }
