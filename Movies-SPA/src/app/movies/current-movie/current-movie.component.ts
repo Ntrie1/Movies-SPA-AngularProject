@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MovieService } from 'src/app/services/movie.service';
 import { Movie } from 'src/app/types/movie';
-import { MatSnackBar } from "@angular/material/snack-bar";
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -30,6 +29,8 @@ export class CurrentMovieComponent implements OnInit {
   ngOnInit(): void {
     const movieId = this.activatedRoute.snapshot.params['movieId']
     const userId = this.authService.user?._id;
+    // const user = this.authService.user;
+    
 
     this.movieService.getMovieById(movieId).subscribe(
       (movieData) =>{
@@ -38,6 +39,26 @@ export class CurrentMovieComponent implements OnInit {
       if(userId && this.movie.userId.toString() === userId){
         this.isOwner = true;
       }
+
+
+
+      this.authService.getUserBookmarks().subscribe(
+        (userBookmarkedMovies) =>{
+
+          
+          console.log('Movie ID:', movieId);
+          console.log('User Movies:', userBookmarkedMovies);
+
+          const bookmarkedMovies = userBookmarkedMovies?.some((m) => m._id.toString() === movieId.toString());
+          this.isBookmarked = bookmarkedMovies;
+          
+        }
+        )
+
+    
+
+      //  const bookmarkedMovies = user?.movies.some((m) => m.toString() === movieId.toString());
+    //  console.log(bookmarkedMovies);
 
     },
     (error) =>{
@@ -64,12 +85,10 @@ export class CurrentMovieComponent implements OnInit {
 
   bookmark(): void {
     const movieId = this.activatedRoute.snapshot.params['movieId']
+
     this.movieService.bookmarkMovie(movieId).subscribe(
       () => {
         this.router.navigate(['/profile'])
-        this.isBookmarked = true
-
-        
         
       },
       (error) => {
@@ -84,6 +103,10 @@ export class CurrentMovieComponent implements OnInit {
 
 
   deleteMovie(): void {
+    const shouldDelete = window.confirm('Are you sure you want to delete this movie?');
+
+    if (shouldDelete) {
+    
     const movieId = this.activatedRoute.snapshot.params['movieId'];
 
     this.movieService.deleteMovie(movieId).subscribe(
@@ -92,7 +115,6 @@ export class CurrentMovieComponent implements OnInit {
       },
       (error) => {
         if (error.status === 403) {
-          // Handle 403 error
         } else {
           this.errorMessage = error.error.error;
         }
@@ -100,6 +122,6 @@ export class CurrentMovieComponent implements OnInit {
     );
   }
 
-
+ }
 
 }

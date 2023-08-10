@@ -25,10 +25,11 @@
         <p>Upvotes: {{ movie.upVotes }}</p>
         <p>Downvotes: {{ movie.downVotes }}</p>
       </div> -->
-      <div class="info-row" *ngIf="!isBookmarked">
+      <div class="info-row" >
         <h3>Bookmark: </h3>
-        <button (click)="bookmark()" class="bookmark-btn" *ngIf="!errorMessage">Bookmark Here</button>
-        <p class="error-message" *ngIf="errorMessage">{{errorMessage}}</p>
+        <button (click)="bookmark()" class="bookmark-btn" *ngIf="!isBookmarked">Bookmark Here</button>
+        <!-- <p class="error-message" *ngIf="errorMessage">{{errorMessage}}</p> -->
+        <a routerLink="/profile" class="read-more" *ngIf="isBookmarked"> You've bookmarked this movie! Go to bookmarks. </a>
       </div>
       <button (click)="deleteMovie()" class="delete-btn" *ngIf="isOwner" >Delete</button>
       <p class="error-message" *ngIf="errorMessage" >{{errorMessage}}</p>
