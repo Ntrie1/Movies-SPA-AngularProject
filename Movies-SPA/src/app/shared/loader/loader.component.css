@@ -22,6 +22,28 @@
     border-radius: 80%;
     background: rgb(9, 72, 103);
   }
+
+  .loader-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6); /* Add a semi-transparent overlay */
+    z-index: 99999; /* Set a high z-index to make sure it's on top */
+  }
+  
+  .lds-spinner {
+    color: official;
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+
   .lds-spinner div:nth-child(1) {
     transform: rotate(0deg);
     animation-delay: -1.1s;

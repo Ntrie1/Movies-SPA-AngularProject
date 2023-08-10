@@ -1,4 +1,15 @@
-<section class="articles">
+<section>
+
+<div *ngIf="isLoading">
+  <app-loader></app-loader>
+</div>
+
+
+
+<section class="articles" *ngIf="!isLoading">
+
+
+
   <article *ngFor="let movie of movies">
     <div class="article-wrapper">
       <figure>
@@ -20,4 +31,6 @@
   </article>
   
   
+</section>
+
 </section>

@@ -9,12 +9,14 @@ import { Movie } from 'src/app/types/movie';
 })
 export class AllMoviesComponent implements OnInit {
   movies: Movie[] = [];
+  isLoading: boolean = true;
 
   constructor(private movieService: MovieService) { }
 
   ngOnInit(): void {
     this.movieService.getAllMovies().subscribe((moviesData) =>{
       this.movies = moviesData;
+      this.isLoading = false;
     })
     
   }
