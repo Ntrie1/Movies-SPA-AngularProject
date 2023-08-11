@@ -9,8 +9,9 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-  password!: string;
-  rePassword: string | undefined;
+  errorMessage: string | null =  null;
+  passwordsMatch: boolean = true;
+
   
 
   constructor( private auth: AuthService, private router: Router ) { }
@@ -22,11 +23,29 @@ export class RegisterComponent {
     if(form.invalid) return;
 
     const { username, email, password, rePassword } = form.value;
-    this.password = password;
     
-    this.auth.register(username, email, password, rePassword).subscribe(()=>{
+    if (password !== rePassword) {
+      this.errorMessage = 'Passwords do not match';
+      this.passwordsMatch = false;
+      return;
+    }
+
+    
+    this.auth.register(username, email, password, rePassword).subscribe(
+      ()=>{
       this.router.navigate(['/home']);
-    })
+    },
+    (error) => {
+      // Handle the error here
+      // You can show the error message to the user
+      this.errorMessage =  error;
+      console.error(error); // Log the error for debugging
+      // Show the error message to the user using a snackbar or alert
+      // For example, if you have a snackbar service:
+    
+    }
+
+    )
   }
 
 }

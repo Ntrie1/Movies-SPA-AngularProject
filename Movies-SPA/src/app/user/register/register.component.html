@@ -34,6 +34,7 @@
      
      
         <ng-container *ngIf="inputPassword.invalid && !inputPassword.untouched">
+          <p class="error-message" *ngIf="inputPassword.errors?.['required']">Passowrd is required!</p>
         <p class="error-message" *ngIf="inputPassword.errors?.['minlength']">Password must be at least 5 characters!</p>
         <p class="error-message" *ngIf="inputPassword.errors?.['pattern']">Password format is not valid! No whitesapce allowed!</p>
       </ng-container>
@@ -49,13 +50,14 @@
      
          <ng-container *ngIf="inputPassword.touched">
 
-           <p class="error-message" *ngIf="inputPassword.errors?.['required']">Confirm Passowrd is required!</p>
-           <p class="error-message" *ngIf="inputPassword.value !== inputRepassword.value">Passwords do not match!</p>
+           <p class="error-message" *ngIf="inputRepassword.errors?.['required']">Confirm Passowrd is required!</p>
           </ng-container>
           
         </div>
     
-      
+        <ng-container *ngIf="errorMessage || !passwordsMatch">
+          <p class="error-message">{{errorMessage}}</p>
+        </ng-container>
       <button [disabled]="form.invalid" [style.opacity]=" form.invalid ? 0.5 : 1" >Register</button>
     </form>
 
