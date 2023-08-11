@@ -27,15 +27,6 @@ const movieSchema =  new mongoose.Schema({
         required: true
     },
 
-    upVotes: {
-        type: Number,
-        default: 0
-    },
-
-    downVotes: {
-        type:Number,
-        default: 0
-    },
 
     bookmarkedBy: { 
         type: ObjectId,
