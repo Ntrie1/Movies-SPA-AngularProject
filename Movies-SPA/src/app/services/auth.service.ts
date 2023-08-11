@@ -45,6 +45,16 @@ export class AuthService implements OnDestroy {
     .pipe(tap((user)=> {
       this.user$$.next(user)
       localStorage.setItem('user', JSON.stringify(user));
+    }),
+    catchError((error) => {
+      if (error.status === 409) {
+       
+        const errorMessage = error.error?.message || 'User already exists!';
+        return throwError(errorMessage);
+      } else {
+
+        return throwError(error);
+      }
     })
     );
   }
