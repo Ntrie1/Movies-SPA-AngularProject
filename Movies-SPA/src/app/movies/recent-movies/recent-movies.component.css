@@ -33,6 +33,7 @@ body {
     padding: 20px;
     margin: 20px;
     text-align: center;
+    transition: background-color 0.4s;
 }
 
 .movie-card:has(:hover, :focus) {
@@ -50,6 +51,12 @@ body {
     object-fit: cover;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+ 
+    max-width: 100%;
+    transform-origin: center;
+    transform: scale(var(--img-scale));
+    transition: transform 0.4s ease-in-out;
+    
 }
 
 .movie-info {
