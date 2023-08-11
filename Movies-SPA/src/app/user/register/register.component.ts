@@ -36,12 +36,9 @@ export class RegisterComponent {
       this.router.navigate(['/home']);
     },
     (error) => {
-      // Handle the error here
-      // You can show the error message to the user
       this.errorMessage =  error;
-      console.error(error); // Log the error for debugging
-      // Show the error message to the user using a snackbar or alert
-      // For example, if you have a snackbar service:
+      console.error(error); 
+   
     
     }
 
