@@ -1,0 +1,23 @@
+<body>
+    <h2 class="title">The Newest Movies</h2>
+    <div class="recent-movies" *ngIf="movies">
+        
+        <div class="movie-card" *ngFor="let movie of movies">
+            <img src="{{movie.image}}" alt="Movie Poster">
+            <div class="movie-info">
+                <h3 class="movie-title">{{movie.title}}</h3>
+                <p class="movie-date">{{movie.date}}</p>
+                <p class="movie-genre">{{movie.genre}}</p>
+            </div>
+        
+            <a routerLink="/movies/{{movie._id}}" class="read-more" *ngIf="isLogged">Read More</a>
+            
+            <p class="not-login" *ngIf="!isLogged">Wanna read more? <a routerLink="/register">Sign up now!</a></p>
+        </div>
+        
+
+    </div>
+    <div class="no-movies" *ngIf="errorMessage" >
+        <p>{{errorMessage}}</p>
+    </div>
+</body>

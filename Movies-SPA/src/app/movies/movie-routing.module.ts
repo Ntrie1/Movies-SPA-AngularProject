@@ -4,6 +4,7 @@ import { AllMoviesComponent } from './all-movies/all-movies.component';
 import { NewMovieComponent } from './new-movie/new-movie.component';
 import { CurrentMovieComponent } from './current-movie/current-movie.component';
 import { AuthActivate } from '../core/guards/auth.activate';
+import { RecentMoviesComponent } from './recent-movies/recent-movies.component';
 
 
 
@@ -22,6 +23,11 @@ const routes: Routes = [
     path: 'movies/:movieId',
     component: CurrentMovieComponent,
     canActivate: [AuthActivate]
+  },
+  {
+    path: 'recent',
+    component: RecentMoviesComponent,
+
   }
   
  

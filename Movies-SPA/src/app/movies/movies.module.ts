@@ -6,6 +6,7 @@ import { NewMovieComponent } from './new-movie/new-movie.component';
 import { FormsModule } from '@angular/forms';
 import { CurrentMovieComponent } from './current-movie/current-movie.component';
 import { SharedModule } from "../shared/shared.module";
+import { RecentMoviesComponent } from './recent-movies/recent-movies.component';
 
 
 
@@ -13,7 +14,8 @@ import { SharedModule } from "../shared/shared.module";
     declarations: [
         AllMoviesComponent,
         NewMovieComponent,
-        CurrentMovieComponent
+        CurrentMovieComponent,
+        RecentMoviesComponent
     ],
     imports: [
         CommonModule,

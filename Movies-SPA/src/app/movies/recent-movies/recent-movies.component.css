@@ -1,0 +1,99 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+}
+
+/* Container for the recent movies */
+.recent-movies {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Title for the recent movies section */
+.title {
+    font-size: 45px;
+    margin-top: 40px;
+    text-align: center;
+    color: #028476;
+    text-shadow: #000 2px 0 2px;
+}
+
+/* Movie Card Styles */
+.movie-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+}
+
+.movie-card:has(:hover, :focus) {
+    --img-scale: 1.1;
+    --title-color: #28666e;
+    --link-icon-translate: 0;
+    --link-icon-opacity: 1;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    background-color: #E7F6FC;
+  }
+
+.movie-card img {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.movie-info {
+    flex-grow: 1;
+}
+
+.movie-title {
+    margin: 10px 0;
+    font-size: 20px;
+}
+
+.movie-genre {
+    margin: 5px 0;
+    color: #666;
+}
+
+.read-more {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.read-more:hover {
+    background-color: #0056b3;
+}
+
+.movie-date {
+    font-size: 16px;
+    color: #740000;
+    margin: 5px 0;
+    font-weight: 700;
+  }
+
+
+  .not-login{
+    font-size: 18px;
+    font-weight: 600;
+    color: #740000;
+  }
+
+
+  
+  
