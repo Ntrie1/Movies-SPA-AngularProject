@@ -51,7 +51,6 @@ export class ProfileComponent implements OnInit {
       (error) => {
         this.errorMessage = error;
         this.bookmarkedMovies = [];
-        console.log('Error occurred:', this.errorMessage);
       }
     );
   }
