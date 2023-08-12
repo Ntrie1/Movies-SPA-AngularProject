@@ -78,7 +78,7 @@ Validators:
  -  Image Url - should be at least 10 characters and also validator (regex pattern) is implied.
  -  Genre should be at least 2 characters long.
  -  Date does not allow whitespace.
-The "Post Theme" button should be disabled if the inputs are NOT valid.
+
 
 
 
