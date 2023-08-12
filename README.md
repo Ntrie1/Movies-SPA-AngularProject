@@ -83,7 +83,6 @@ The "Post Theme" button should be disabled if the inputs are NOT valid.
 
 
 
-
 ## Profile page
 Page only for logged in users
 Profile page contains:
