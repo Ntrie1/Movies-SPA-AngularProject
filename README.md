@@ -68,7 +68,7 @@ From Validators
   - pepa@gmail.com      pass: 123456;
 
 
-### Add new movie page
+## Add new movie page
 This page is accessible only by logged in users.
 
 The new movie form expects as input: titile, description, imageUrl, genre and release date.
@@ -84,7 +84,7 @@ The "Post Theme" button should be disabled if the inputs are NOT valid.
 
 
 
-### Profile page
+## Profile page
 Page only for logged in users
 Profile page contains:
  -  Information about the user such as their email and username.
@@ -94,8 +94,11 @@ Profile page contains:
 
 ## All Movies Page
 Page only for logged in users
-
  - The page contains all the movies.
+
+
+
+
 
 
  ## Recent Movies Page
@@ -113,33 +116,23 @@ Page only for logged in users
  sign up a tag but instead a "Read more" button that navigates them to the movie's details page.
 
 
-### Movie deatails page
-The page there are two parts - public and private(for logged in users).
-1. Public part: 
- - all users can see post text, date of create, poster user and numbers of likes, but not to like, edit, delete post or to add a new comment.
+## Movie deatails page
+
+1. The page contains all the details about the certain movie.
+
+
+2. It has three buttons 
+- Bookmark - Every logged in user can access it and bookmark the desired movie.
+- Delete - Only creator of the movie can access this button and therefore delete the movie if desired. After clicking on this button
+they will be altered and made to confirm their choice.
+- Edit - Only creator of the movie are given access to this button and when it's clicked they will be redirected to edit page. 
+
    
-![image](https://github.com/fanitaadamova/My-personal-Angular-Project-Softuni/assets/113979211/c7b34596-5e61-4f63-bee5-612227a9993c)
 
-
-
-2. Private part - only for logged in users:
-   - Can posts a new comment;
-   - Can likes every comment. If it already liked the post, there are a message "Already liked";
-   - If the user is owner of post, it sees edit and delete buttons.
-
-![image](https://github.com/fanitaadamova/My-personal-Angular-Project-Softuni/assets/113979211/085aba56-5355-42d9-9f10-4be0bf734099)
-
-![image](https://github.com/fanitaadamova/My-personal-Angular-Project-Softuni/assets/113979211/96005a45-722e-4efa-8b64-d3fa7ec8c747)
-
-
-#### Theme deatails - delete post
-
-![image](https://github.com/fanitaadamova/My-personal-Angular-Project-Softuni/assets/113979211/f2224863-2f3f-4928-8468-c57e2a1c5653)
-
-
-#### Theme deatails - edit post
-
-![image](https://github.com/fanitaadamova/My-personal-Angular-Project-Softuni/assets/113979211/15798f91-b80b-42c3-b6aa-fb7cadfeaf7f)
+## Movie Edit Page
+ - This page can be only accessed from logged in users that are oweners of the movie that is wished to be edited. The edit page form validators are identical to the Create From ones.
+ - When user click on Submit button the movie will be edited and they will be redirected to the edited movie so they can see the chnages 
+ they've made on it. 
 
 
 
