@@ -17,7 +17,7 @@
       
       <div class="form-group">
         <label for="description">Description</label>
-        <input type="description" id="description" name="description" placeholder="description your email" 
+        <input type="description" id="description" name="description" placeholder="Enter description" 
         #inputDescription="ngModel" ngModel required minlength="15" >
 
         <ng-container *ngIf="inputDescription.invalid && !inputDescription.untouched">
@@ -44,7 +44,7 @@
       
       <div class="form-group">
         <label for="genre">Genre</label>
-        <input type="genre" id="genre" name="genre" placeholder="Confirm your password"
+        <input type="genre" id="genre" name="genre" placeholder="Enter genre"
          #inputGenre="ngModel" ngModel required minlength="2">
     
      
@@ -53,7 +53,7 @@
            <p class="error-message" *ngIf="inputGenre.errors?.['minlength']">Genre must be at least 2 characters!</p>
           </ng-container>
           
-        </div>
+        </div> 
 
         <div class="form-group">
             <label for="date">Release Date</label>
