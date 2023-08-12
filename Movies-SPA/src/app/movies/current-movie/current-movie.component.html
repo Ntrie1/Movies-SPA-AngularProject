@@ -32,6 +32,7 @@
         <a routerLink="/profile" class="read-more" *ngIf="isBookmarked"> You've bookmarked this movie! Go to bookmarks. </a>
       </div>
       <button (click)="deleteMovie()" class="delete-btn" *ngIf="isOwner" >Delete</button>
+      <button routerLink="/movies/{{movie._id}}/edit" class="edit-btn" *ngIf="isOwner" >Edit</button>
       <p class="error-message" *ngIf="errorMessage" >{{errorMessage}}</p>
     </div>
     <div class="movie-image">

@@ -73,12 +73,33 @@
     cursor: pointer;
     margin-right: 10px;
     margin-left: 10px;
+    margin-bottom: 5px;
   }
 
   .delete-btn:hover{
     background-color: red;
     box-shadow: 0 4px 8px rgb(0, 0, 0);
   }
+
+
+  .edit-btn{
+    padding: 8px 16px;
+    background-color: #028476;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-top: 5px;
+  }
+
+  .edit-btn:hover{
+    background-color: rgb(49, 115, 61);
+    box-shadow: 0 4px 8px rgb(0, 0, 0);
+  }
+
+  
   
   .vote-count {
     margin-top: 20px;
