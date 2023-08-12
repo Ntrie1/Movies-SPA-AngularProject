@@ -25,6 +25,9 @@ export class AllMoviesComponent implements OnInit {
           this.errorMessage = 'There are not movies yet!';
         }
 
+      },
+      (error) =>{
+        this.errorMessage = error;
       }
 
     )

@@ -66,6 +66,10 @@
             <p class="error-message" *ngIf="inputDate.errors?.['pattern']">Date format is not valid! No whitesapce allowed!</p>
           </ng-container>
           </div>
+
+          <ng-container *ngIf="errorMessage">
+            <p class="error-message">{{errorMessage}}</p>
+          </ng-container>
     
       
       <button [disabled]="form.invalid" [style.opacity]=" form.invalid ? 0.5 : 1" >Submit</button>

@@ -38,6 +38,9 @@ export class RecentMoviesComponent implements OnInit {
           this.errorMessage = 'There are not movies yet!';
         }
 
+      },
+      (error) =>{
+        this.errorMessage =  'An error occured fetching the movies!'
       }
     )
 

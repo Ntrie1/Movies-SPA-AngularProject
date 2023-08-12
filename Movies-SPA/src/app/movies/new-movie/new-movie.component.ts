@@ -9,6 +9,9 @@ import { MovieService } from 'src/app/services/movie.service';
   styleUrls: ['./new-movie.component.css']
 })
 export class NewMovieComponent {
+
+  errorMessage: string | undefined;
+
   constructor(private apiService: MovieService, private router: Router) {}
 
   newMovieSubmitHandler(form: NgForm): void{
@@ -18,9 +21,14 @@ export class NewMovieComponent {
    
 
     this.apiService.createMovie( title, description, image, genre, date)
-    .subscribe(() =>{
+    .subscribe(
+      () =>{
       this.router.navigate(['/catalogMovies'])
-    })
+    },
+    (error) =>{
+      this.errorMessage = 'An error occured trying to create a movie!'
+    }
+    )
     
   }
 }

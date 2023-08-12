@@ -54,7 +54,6 @@ export class CurrentMovieComponent implements OnInit {
       },
       (error) => {
         this.errorMessage = error;
-        console.log(error);
       }
 
 
@@ -92,10 +91,7 @@ export class CurrentMovieComponent implements OnInit {
           this.router.navigate(['/catalogMovies']);
         },
         (error) => {
-          if (error.status === 403) {
-          } else {
-            this.errorMessage = error.error.error;
-          }
+          this.errorMessage =  error;
         }
       );
     }
