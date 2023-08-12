@@ -48,6 +48,14 @@ export class MovieService {
       } )
      )
   }
+
+  editMovie(movie: Movie){
+    return this.http.put<Movie>(`/api/movies/edit/${movie._id}`, movie).pipe(
+      catchError((error) => {
+        throw 'Error editing movie';
+      })
+    );
+  }
   
 
 }

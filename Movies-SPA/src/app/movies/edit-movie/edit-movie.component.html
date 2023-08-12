@@ -1,0 +1,80 @@
+<main class="container">
+    <form #form="ngForm" (ngSubmit)="saveChanges()" >
+
+      <h1>Edit Movie</h1>
+     
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" id="title" name="title" placeholder="Enter title" 
+        #inputTitle="ngModel" [(ngModel)]="movie!.title" required minlength="3" >
+
+        <ng-container *ngIf="inputTitle.invalid && !inputTitle.untouched">
+          <p class="error-message" *ngIf="inputTitle.errors?.['minlength']">Title must be at least 3 characters!</p>
+          <p class="error-message" *ngIf="inputTitle.errors?.['required']">Title is required!</p>
+        </ng-container>
+
+      </div>
+      
+      <div class="form-group">
+        <label for="description">Description</label>
+        <input type="description" id="description" name="description" placeholder="description your email" 
+        #inputDescription="ngModel" [(ngModel)]="movie!.description" required minlength="15" >
+
+        <ng-container *ngIf="inputDescription.invalid && !inputDescription.untouched">
+          <p class="error-message" *ngIf="inputDescription.errors?.['minlength']">Description must be at least 15 characters!</p>
+          <p class="error-message" *ngIf="inputDescription.errors?.['required']">Description is required!</p>
+
+        </ng-container>
+      </div>
+      
+      <div class="form-group">
+        <label for="image">Image Url</label>
+        <input type="text" id="image" name="image" placeholder="Enter your image" 
+        #inputImage="ngModel" [(ngModel)]="movie!.image" required minlength="10" pattern="https?:\/\/.*$" >
+     
+     
+        <ng-container *ngIf="inputImage.invalid && !inputImage.untouched">
+            <p class="error-message" *ngIf="inputImage.errors?.['required']">Image Url is required!</p>
+        <p class="error-message" *ngIf="inputImage.errors?.['minlength']">Image must be at least 10 characters!</p>
+        <p class="error-message" *ngIf="inputImage.errors?.['pattern']">Image must start with http/s:// </p>
+      </ng-container>
+      </div>
+
+
+      
+      <div class="form-group">
+        <label for="genre">Genre</label>
+        <input type="genre" id="genre" name="genre" placeholder="Confirm your password"
+         #inputGenre="ngModel"  [(ngModel)]="movie!.genre" required minlength="2">
+    
+     
+         <ng-container *ngIf="inputGenre.touched">
+           <p class="error-message" *ngIf="inputGenre.errors?.['required']">Genre is required!</p>
+           <p class="error-message" *ngIf="inputGenre.errors?.['minlength']">Genre must be at least 2 characters!</p>
+          </ng-container>
+          
+        </div>
+
+        <div class="form-group">
+            <label for="date">Release Date</label>
+            <input type="date" id="date" name="date" placeholder="Enter your date" 
+            #inputDate="ngModel" [(ngModel)]="movie!.date" required  >
+         
+         
+            <ng-container *ngIf="inputDate.invalid && !inputDate.untouched">
+            <p class="error-message" *ngIf="inputDate.errors?.['required']">Date is required</p>
+            <p class="error-message" *ngIf="inputDate.errors?.['pattern']">Date format is not valid! No whitesapce allowed!</p>
+          </ng-container>
+          </div>
+
+          <ng-container *ngIf="errorMessage" >
+            <p class="error-message">{{errorMessage}}</p>
+          </ng-container>
+    
+      
+      <button [disabled]="form.invalid" [style.opacity]=" form.invalid ? 0.5 : 1" >Submit</button>
+     </form>
+
+
+
+</main>
