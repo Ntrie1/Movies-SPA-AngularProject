@@ -1,6 +1,6 @@
 <body>
     <h2 class="title">The Newest Movies</h2>
-    <div class="recent-movies" *ngIf="movies">
+    <div class="recent-movies" *ngIf="movies && !errorMessage">
         
         <div class="movie-card" *ngFor="let movie of movies">
             <img src="{{movie.image}}" alt="Movie Poster">

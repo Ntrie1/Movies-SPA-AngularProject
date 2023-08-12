@@ -31,8 +31,12 @@ export class RecentMoviesComponent implements OnInit {
       (moviesData)=>{
         this.movies = moviesData.sort((a,b) =>{
           return new Date(b.date).getTime() - new Date(a.date).getTime();
-        });
-      
+        })
+        .slice(0, 10);
+        
+        if (this.movies.length === 0) {
+          this.errorMessage = 'There are not movies yet!';
+        }
 
     },
     )
