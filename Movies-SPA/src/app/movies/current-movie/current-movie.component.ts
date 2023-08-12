@@ -22,66 +22,47 @@ export class CurrentMovieComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private authService: AuthService,
-    ) { }
+  ) { }
 
 
 
   ngOnInit(): void {
     const movieId = this.activatedRoute.snapshot.params['movieId']
     const userId = this.authService.user?._id;
-    // const user = this.authService.user;
-    
+
+
 
     this.movieService.getMovieById(movieId).subscribe(
-      (movieData) =>{
-      this.movie = movieData
+      (movieData) => {
+        this.movie = movieData
 
-      if(userId && this.movie.userId.toString() === userId){
-        this.isOwner = true;
+        if (userId && this.movie.userId.toString() === userId) {
+          this.isOwner = true;
+        }
+
+
+
+        this.authService.getUserBookmarks().subscribe(
+          (userBookmarkedMovies) => {
+
+            const bookmarkedMovies = userBookmarkedMovies?.some((m) => m._id.toString() === movieId.toString());
+            this.isBookmarked = bookmarkedMovies;
+
+          }
+        )
+
+      },
+      (error) => {
+        this.errorMessage = error;
+        console.log(error);
       }
 
 
-
-      this.authService.getUserBookmarks().subscribe(
-        (userBookmarkedMovies) =>{
-
-          
-          console.log('Movie ID:', movieId);
-          console.log('User Movies:', userBookmarkedMovies);
-
-          const bookmarkedMovies = userBookmarkedMovies?.some((m) => m._id.toString() === movieId.toString());
-          this.isBookmarked = bookmarkedMovies;
-          
-        }
-        )
-
-    
-
-      //  const bookmarkedMovies = user?.movies.some((m) => m.toString() === movieId.toString());
-    //  console.log(bookmarkedMovies);
-
-    },
-    (error) =>{
-       this.errorMessage = error;
-       console.log(error);
-    }
-    
-    
     )
-      
-        
-  }
 
-  
-
-
-  upvote(): void {
 
   }
 
-  downvote(): void {
-
-  }
 
   bookmark(): void {
     const movieId = this.activatedRoute.snapshot.params['movieId']
@@ -89,14 +70,11 @@ export class CurrentMovieComponent implements OnInit {
     this.movieService.bookmarkMovie(movieId).subscribe(
       () => {
         this.router.navigate(['/profile'])
-        
+
       },
       (error) => {
-        this.errorMessage =  error.error.error
-        // this.snackBar.open(error.error.error, 'Close', {
-        //   duration: 5000, 
-        //   verticalPosition: 'top',
-        // });
+        this.errorMessage = error.error.error
+
       }
     )
   }
@@ -106,22 +84,22 @@ export class CurrentMovieComponent implements OnInit {
     const shouldDelete = window.confirm('Are you sure you want to delete this movie?');
 
     if (shouldDelete) {
-    
-    const movieId = this.activatedRoute.snapshot.params['movieId'];
 
-    this.movieService.deleteMovie(movieId).subscribe(
-      () => {
-        this.router.navigate(['/catalogMovies']);
-      },
-      (error) => {
-        if (error.status === 403) {
-        } else {
-          this.errorMessage = error.error.error;
+      const movieId = this.activatedRoute.snapshot.params['movieId'];
+
+      this.movieService.deleteMovie(movieId).subscribe(
+        () => {
+          this.router.navigate(['/catalogMovies']);
+        },
+        (error) => {
+          if (error.status === 403) {
+          } else {
+            this.errorMessage = error.error.error;
+          }
         }
-      }
-    );
-  }
+      );
+    }
 
- }
+  }
 
 }

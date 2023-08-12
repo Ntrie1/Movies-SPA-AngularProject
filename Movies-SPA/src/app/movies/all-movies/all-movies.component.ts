@@ -17,18 +17,18 @@ export class AllMoviesComponent implements OnInit {
 
   ngOnInit(): void {
     this.movieService.getAllMovies().subscribe(
-      (moviesData) =>{
-      this.movies = moviesData;
-      this.isLoading = false; 
+      (moviesData) => {
+        this.movies = moviesData;
+        this.isLoading = false;
 
-      if (this.movies.length === 0) {
-        this.errorMessage = 'There are not movies yet!';
+        if (this.movies.length === 0) {
+          this.errorMessage = 'There are not movies yet!';
+        }
+
       }
-      
-    },
 
     )
-    
+
   }
 
 

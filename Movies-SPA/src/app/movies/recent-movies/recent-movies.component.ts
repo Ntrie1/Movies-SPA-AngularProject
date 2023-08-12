@@ -12,33 +12,33 @@ export class RecentMoviesComponent implements OnInit {
   movies: Movie[] = [];
   errorMessage: string | undefined;
 
-  constructor(private movieService: MovieService, private authService: AuthService) {}
+  constructor(private movieService: MovieService, private authService: AuthService) { }
 
 
-  get isLogged(): boolean{
-    return this.authService.isLogged; 
+  get isLogged(): boolean {
+    return this.authService.isLogged;
   }
 
 
 
   ngOnInit(): void {
     this.loadMovies();
-    
+
   }
 
-  loadMovies(): void{
+  loadMovies(): void {
     this.movieService.getAllMovies().subscribe(
-      (moviesData)=>{
-        this.movies = moviesData.sort((a,b) =>{
+      (moviesData) => {
+        this.movies = moviesData.sort((a, b) => {
           return new Date(b.date).getTime() - new Date(a.date).getTime();
         })
-        .slice(0, 10);
-        
+          .slice(0, 10);
+
         if (this.movies.length === 0) {
           this.errorMessage = 'There are not movies yet!';
         }
 
-    },
+      }
     )
 
   }
