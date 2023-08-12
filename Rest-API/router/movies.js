@@ -139,5 +139,37 @@ router.put('/:movieId/bookmark',auth(), async (req, res)=>{
   });
 
 
+
+  router.put('/edit/:movieId', auth(), async (req, res) => {
+    const { movieId } = req.params;
+    const userId = req.user?._id;
+
+    console.log(movieId)
+  
+    try {
+      const movieToUpdate = await movieModel.findById(movieId);
+  
+      if (!movieToUpdate) {
+        return res.status(404).json({ error: 'Movie not found' });
+      }
+  
+      // Check if the user is the creator of the movie
+      if (movieToUpdate.userId.toString() !== userId.toString()) {
+        return res.status(403).json({ error: 'You are not authorized to edit this movie' });
+      }
+  
+      // Update movie data with the new values from the request body
+      const updatedMovie = { ...movieToUpdate.toObject(), ...req.body };
+  
+      // Save the updated movie to the database
+      await movieToUpdate.updateOne(updatedMovie);
+  
+      res.json({ message: 'Movie updated successfully', updatedMovie });
+    } catch (error) {
+      res.status(500).json({ error: 'An error occurred while updating the movie' });
+    }
+  });
+
+
  
 module.exports = router;
